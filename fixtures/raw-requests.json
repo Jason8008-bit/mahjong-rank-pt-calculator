@@ -1,0 +1,10 @@
+[
+  {"name":"decimal-round-and-scores","valid":true,"json":"{\"kyoku_idx\":0.0,\"honba\":1e0,\"kyotaku\":-0.0,\"scores\":[2.5e4,25000.0,25000,25000],\"table\":\"特上\",\"dan\":\"四段\"}"},
+  {"name":"custom-integral-pt","valid":true,"json":"{\"kyoku_idx\":1e1,\"honba\":0.0,\"kyotaku\":0,\"scores\":[25000,25000,25000,25000],\"custom_pt\":{\"first\":75.0,\"second\":3e1,\"third\":-0.0,\"fourth\":-90.0}}"},
+  {"name":"terminal-floats","valid":true,"json":"{\"kyoku_idx\":11.0,\"honba\":100.0,\"kyotaku\":1e2,\"scores\":[1e6,50000,25000,-1e5]}"},
+  {"name":"null-custom","valid":true,"json":"{\"kyoku_idx\":5,\"honba\":0,\"kyotaku\":0,\"scores\":[25000,25000,25000,25000],\"custom_pt\":null}"},
+  {"name":"fractional-round","valid":false,"json":"{\"kyoku_idx\":0.5,\"honba\":0,\"kyotaku\":0,\"scores\":[25000,25000,25000,25000]}"},
+  {"name":"nonfinite-score","valid":false,"json":"{\"kyoku_idx\":0,\"honba\":0,\"kyotaku\":0,\"scores\":[1e309,25000,25000,25000]}"},
+  {"name":"boolean-counter","valid":false,"json":"{\"kyoku_idx\":0,\"honba\":true,\"kyotaku\":0,\"scores\":[25000,25000,25000,25000]}"},
+  {"name":"missing-seat","valid":false,"json":"{\"kyoku_idx\":0,\"honba\":0,\"kyotaku\":0,\"scores\":[25000,25000,25000,null]}"}
+]

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#203f3b" />
+    <meta name="description" content="日本麻将段位 pt 计算器：按天凤官方东南战 pt 表，估计四家顺位概率与 pt 期望，并对比 160 项代表性结局。纯前端、离线可跑。只支持天凤四人东南战（半庄）。" />
+    <title>日本麻将段位 pt 计算器 · 天凤东南战</title>
+    <style>
+      #startup {max-width:620px;margin:8vh auto;padding:28px;font:15px/1.9 system-ui,sans-serif;color:#203f3b;background:#f0f3ec;border-radius:12px}
+      #startup h1 {font-size:26px} #startup code {background:white;padding:4px 8px;border-radius:4px}
+      #startup a {color:#245a4c} #startup small {display:block;margin-top:20px}
+    </style>
+  </head>
+  <body>
+    <div id="root"><main id="startup">
+      <h1>打开听雀工具</h1>
+      <p>页面正在载入。若一直停留在这里，请按你使用的文件选择打开方式：</p>
+      <p><strong>直接使用：</strong>解压听雀网页包，打开其中的 <code>index.html</code>。</p>
+      <p><strong>使用源码：</strong>在源码目录执行 <code>npm ci</code> 和 <code>npm run dev</code>，再打开终端显示的本地地址。</p>
+      <small>直接双击源码或普通静态构建的 HTML 无法载入完整工具；网页包中的单文件版可直接打开。若单文件版也停留在此处，请使用较新的浏览器并启用 JavaScript。</small>
+      <p><a href="https://tingque.ai/" target="_blank" rel="noopener noreferrer">前往 TingQue.ai 使用完整功能 ↗</a></p>
+    </main></div>
+    <noscript>请启用 JavaScript 运行段位分析。完整工具集：<a href="https://tingque.ai/">TingQue.ai</a></noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
