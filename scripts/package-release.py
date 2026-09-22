@@ -129,7 +129,10 @@ def main() -> None:
     archive(destination / source_name, {f'tingque-open-tool/{name}': data for name, data in files.items()})
     archive(destination / web_name, {f'tingque-web/{name}': data for name, data in web.items()})
     checksums = ''.join(f'{digest((destination / name).read_bytes())}  {name}\n' for name in (source_name, web_name))
-    (destination / 'SHA256SUMS.txt').write_text(checksums, encoding='utf-8')
+    # newline='\n' 不可省：Path.write_text 默认按平台翻译换行，在 Windows 上打包会写出
+    # CRLF，而 sha256sum -c 会把行尾的 \r 当成文件名的一部分，于是每一行都报 FAILED
+    # —— 下载者会以为压缩包被人动过。校验清单必须与平台无关。
+    (destination / 'SHA256SUMS.txt').write_text(checksums, encoding='utf-8', newline='\n')
     print(f'Packaged {len(files) - 1} source files + source manifest; {len(web)} web files.\n{destination}\n{checksums}', end='')
 
 

@@ -110,6 +110,27 @@ def test_valid_build_packages_reproducibly(release_tree: Path) -> None:
         assert path.read_bytes() == (release_tree / 'second' / path.name).read_bytes()
 
 
+def test_checksum_list_is_usable_on_any_platform(release_tree: Path) -> None:
+    """校验清单必须恒为 LF，且每个值真的对得上文件。
+
+    Path.write_text 默认按平台翻译换行，在 Windows 上打包会写出 CRLF；sha256sum -c
+    会把行尾的 \\r 当成文件名的一部分，于是每一行都报 FAILED —— 下载者会以为压缩包
+    被人动过。所以这里钉的是字节，不是「能不能读出来」。
+    """
+    result = package(release_tree)
+    assert result.returncode == 0, result.stderr
+    raw = (release_tree / 'release/SHA256SUMS.txt').read_bytes()
+    assert b'\r' not in raw, f'校验清单里混进了回车符: {raw!r}'
+
+    lines = raw.decode('utf-8').splitlines()
+    assert len(lines) == 2, lines
+    for line in lines:
+        recorded, separator, name = line.partition('  ')
+        assert separator and name.endswith('.zip'), line
+        actual = hashlib.sha256((release_tree / 'release' / name).read_bytes()).hexdigest()
+        assert recorded == actual, f'{name} 的校验值对不上'
+
+
 def test_package_reports_unicode_destination_under_non_utf8_locale(release_tree: Path) -> None:
     result = subprocess.run([sys.executable, str(release_tree / 'scripts/package-release.py'), '--output', str(release_tree / '发布包')],
                             capture_output=True, env={**os.environ, 'PYTHONIOENCODING': 'ascii'}, timeout=20)
