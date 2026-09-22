@@ -3,7 +3,7 @@
 Use Node.js 24 and Python 3.10 or newer. Install with `npm ci` and `python3 -m pip install -e '.[test]'` inside a virtual environment.
 
 1. Describe the intended behavior and its input/output before changing an engine.
-2. Keep `rankpt.py`, `rankpt_rules.py` and `src/domain/rankpt.ts` behavior aligned; add a regression case for algorithm changes.
+2. Keep `rankpt/engine.py`, `rankpt/rules.py` and `src/domain/rankpt.ts` behavior aligned; add a regression case for algorithm changes.
 3. Keep `README.md`, `README.zh-TW.md` and `README.en.md` synchronized. Product facts and routes belong in `src/content/features.ts`.
 4. Run `python3 -m pytest -q`, `npm run verify`, `npx playwright install chromium firefox webkit`, and `npm run test:browser` before submitting a change.
 5. Explain the change, the checks run, and any model assumptions in the pull request. Avoid real players' private replays or personal data in fixtures.

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "tingque-rankpt"
-version = "0.1.3"
+version = "0.1.4"
 description = "Local Japanese mahjong placement and rank-pt scenario analysis"
 readme = "README.en.md"
 requires-python = ">=3.10"
@@ -16,15 +16,15 @@ dependencies = []
 test = ["pytest>=8,<10"]
 
 [project.scripts]
-rankpt = "rankpt_cli:main"
+rankpt = "rankpt.cli:main"
 
 [project.urls]
 Homepage = "https://tingque.ai"
 
 [tool.setuptools]
-py-modules = ["rankpt", "rankpt_rules", "rankpt_cli"]
+packages = ["rankpt"]
 
 [tool.pytest.ini_options]
-testpaths = ["."]
+testpaths = ["tests"]
 python_files = ["test_rankpt.py", "test_cli.py", "test_release.py"]
 norecursedirs = ["node_modules", ".venv", "dist", "dist-standalone"]

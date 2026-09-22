@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.4 — 2026-09-23
+
+- Move the Python reference implementation into the `rankpt` package (`engine.py`, `rules.py`, `cli.py`) and the Python tests into `tests/`, so the repository root holds no loose modules.
+- Keep the public API unchanged: `from rankpt import analyze` and the installed `rankpt` command behave exactly as before; the module entry point is now `python -m rankpt.cli`.
+- Leave every rank-pt table and rule constant untouched; this release changes only import paths, two code comments and documentation references.
+
 ## 0.1.3 — 2026-09-21
 
 - Use screenshots captured from an actual TingQue.ai replay analysis and rank calculation in all three README editions, with anonymous replay labels enabled.

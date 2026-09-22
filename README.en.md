@@ -46,7 +46,7 @@ This repository opens the **toolkit frontend, independently runnable rank-analys
 
 ## Use rank analysis immediately
 
-Extract `tingque-open-tool-v0.1.3-web.zip` and double-click `index.html`. No Python or Node.js installation is needed for that build. Rank analysis and JSON/CSV export work offline; TingQue destinations require a network connection.
+Extract `tingque-open-tool-v0.1.4-web.zip` and double-click `index.html`. No Python or Node.js installation is needed for that build. Rank analysis and JSON/CSV export work offline; TingQue destinations require a network connection.
 
 1. Set the round, honba, riichi sticks and the four scores in fixed initial seat order.
 2. Select Tenhou four-player East-South pt or enter custom placement points.
@@ -92,7 +92,7 @@ rankpt analyze examples/request.json > result.json
 python -m pytest -q
 ```
 
-On Windows, create the environment with `py -m venv .venv`, use `.venv\Scripts\python.exe` for `python`, and `.venv\Scripts\rankpt.exe` for the CLI. Alternatively run `python -m rankpt_cli analyze examples/request.json`. Omit the input file or use `-` to read JSON from standard input. Files and stdin are decoded as UTF-8 with an optional UTF-8 BOM; output and errors also use UTF-8. Invalid input writes to standard error and exits with code 2. Integral JSON values such as `0.0` and `2.5e4` are accepted; booleans, fractional values and infinity are rejected.
+On Windows, create the environment with `py -m venv .venv`, use `.venv\Scripts\python.exe` for `python`, and `.venv\Scripts\rankpt.exe` for the CLI. Alternatively run `python -m rankpt.cli analyze examples/request.json`. Omit the input file or use `-` to read JSON from standard input. Files and stdin are decoded as UTF-8 with an optional UTF-8 BOM; output and errors also use UTF-8. Invalid input writes to standard error and exits with code 2. Integral JSON values such as `0.0` and `2.5e4` are accepted; booleans, fractional values and infinity are rejected.
 
 ```python
 from rankpt import analyze
@@ -121,12 +121,12 @@ src/content/          Capability copy and destinations
 src/components/       Inputs, charts, outcome tables and page components
 src/domain/           TypeScript engine, exports and unit tests
 src/App.tsx           Product page
-rankpt.py             Python reference engine
-rankpt_rules.py       Rank-pt and score constants
-rankpt_cli.py         JSON command-line interface
+rankpt/engine.py      Python reference engine
+rankpt/rules.py       Rank-pt and score constants
+rankpt/cli.py         JSON command-line interface
 fixtures/ examples/   Parity cases and runnable input
 scripts/              Parity, copy checks and release packaging
-tests/                Browser acceptance tests
+tests/                Python unit tests and browser acceptance
 docs/                 Algorithm notes and actual interface screenshots
 ```
 

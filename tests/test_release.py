@@ -11,7 +11,7 @@ import sys
 
 import pytest
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 
 
 def stamp(root: Path) -> None:

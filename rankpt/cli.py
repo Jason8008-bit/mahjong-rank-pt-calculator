@@ -5,7 +5,7 @@ import json
 import sys
 from pathlib import Path
 
-from rankpt import analyze
+from .engine import analyze
 
 
 def main() -> int:

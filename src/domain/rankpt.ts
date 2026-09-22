@@ -1,4 +1,4 @@
-/** Four-player East-South what-if engine, kept in parity with rankpt.py. */
+/** Four-player East-South what-if engine, kept in parity with rankpt/engine.py. */
 export interface PtTable { first: number; second: number; third: number; fourth: number }
 export interface AnalysisRequest {
   kyoku_idx: number; honba: number; kyotaku: number; scores: number[];

@@ -14,7 +14,7 @@ import itertools
 import math
 from dataclasses import dataclass
 
-import rankpt_rules as config  # 模块名带前缀，避免与你项目里的 config 撞名
+from . import rules as config  # 故意不叫 config.py：撞上你项目里的 config 会静默算错数
 
 REGULAR_KYOKU = 8    # 半庄正规局数（东1..南4）
 MAX_KYOKU_IDX = 11   # 西4，强制终局

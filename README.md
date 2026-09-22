@@ -46,7 +46,7 @@
 
 ## 立即使用段位分析
 
-使用发布包 `tingque-open-tool-v0.1.3-web.zip`，解压后双击 `index.html`，即可在浏览器本地计算。无需安装Python或Node.js。离线状态可完成段位分析及JSON/CSV导出；TingQue功能入口需要网络连接。
+使用发布包 `tingque-open-tool-v0.1.4-web.zip`，解压后双击 `index.html`，即可在浏览器本地计算。无需安装Python或Node.js。离线状态可完成段位分析及JSON/CSV导出；TingQue功能入口需要网络连接。
 
 1. 设置场局、本场、供托与固定起家座位的四家点数。
 2. 选择天凤四人半庄pt或自定义四个顺位的pt。
@@ -92,7 +92,7 @@ rankpt analyze examples/request.json > result.json
 python -m pytest -q
 ```
 
-Windows可用`py -m venv .venv`，再使用`.venv\Scripts\python.exe`替代`python`；命令行为`.venv\Scripts\rankpt.exe`。也可执行`python -m rankpt_cli analyze examples/request.json`；省略文件或填`-`可从标准输入读取JSON。输入统一按UTF-8读取，文件与标准输入均支持UTF-8 BOM；输出及错误统一使用UTF-8。错误写入标准错误并返回退出码2。整数值可使用`0.0`或`2.5e4`等JSON数值写法，布尔值、非整数与无穷值仍会被拒绝。
+Windows可用`py -m venv .venv`，再使用`.venv\Scripts\python.exe`替代`python`；命令行为`.venv\Scripts\rankpt.exe`。也可执行`python -m rankpt.cli analyze examples/request.json`；省略文件或填`-`可从标准输入读取JSON。输入统一按UTF-8读取，文件与标准输入均支持UTF-8 BOM；输出及错误统一使用UTF-8。错误写入标准错误并返回退出码2。整数值可使用`0.0`或`2.5e4`等JSON数值写法，布尔值、非整数与无穷值仍会被拒绝。
 
 ```python
 from rankpt import analyze
@@ -121,12 +121,12 @@ src/content/          五项能力的文案与入口
 src/components/       输入、图表、结局表与页面组件
 src/domain/           TypeScript计算引擎、导出与测试
 src/App.tsx           产品页面
-rankpt.py             Python参考引擎
-rankpt_rules.py       pt与点数常量
-rankpt_cli.py         JSON命令行
+rankpt/engine.py      Python参考引擎
+rankpt/rules.py       pt与点数常量
+rankpt/cli.py         JSON命令行
 fixtures/ examples/   对照案例与可运行输入
 scripts/              跨语言校验、文案检查与发布打包
-tests/                浏览器验收
+tests/                Python单元测试与浏览器验收
 docs/                 算法说明与实际界面截图
 ```
 

@@ -8,12 +8,12 @@ from pathlib import Path
 
 from rankpt import analyze
 
-ROOT = Path(__file__).parent
+ROOT = Path(__file__).resolve().parent.parent
 SAMPLE = {"kyoku_idx": 0, "honba": 0, "kyotaku": 0, "scores": [25000] * 4}
 
 
 def run_cli(*args, payload=""):
-    return subprocess.run([sys.executable, "-m", "rankpt_cli", *args],
+    return subprocess.run([sys.executable, "-m", "rankpt.cli", *args],
                           input=payload, capture_output=True, text=True, encoding='utf-8', cwd=ROOT)
 
 
@@ -53,7 +53,7 @@ def test_utf8_stdin_with_bom_matches_file_under_non_utf8_locale(tmp_path):
     path.write_bytes(payload)
     outputs = []
     for args, data in [(('-',), payload), ((str(path),), b'')]:
-        result = subprocess.run([sys.executable, '-m', 'rankpt_cli', 'analyze', *args], input=data,
+        result = subprocess.run([sys.executable, '-m', 'rankpt.cli', 'analyze', *args], input=data,
                                 capture_output=True, cwd=ROOT, env={**os.environ, 'PYTHONIOENCODING': 'cp1252'})
         assert result.returncode == 0, result.stderr.decode('utf-8', errors='replace')
         outputs.append(json.loads(result.stdout))
@@ -61,7 +61,7 @@ def test_utf8_stdin_with_bom_matches_file_under_non_utf8_locale(tmp_path):
 
 
 def test_non_utf8_stdin_returns_concise_error():
-    result = subprocess.run([sys.executable, '-m', 'rankpt_cli', 'analyze'], input=b'\xff',
+    result = subprocess.run([sys.executable, '-m', 'rankpt.cli', 'analyze'], input=b'\xff',
                             capture_output=True, cwd=ROOT, env={**os.environ, 'PYTHONIOENCODING': 'cp1252'})
     assert result.returncode == 2
     assert not result.stdout
@@ -70,7 +70,7 @@ def test_non_utf8_stdin_returns_concise_error():
 
 
 def test_error_message_is_utf8_under_non_utf8_locale():
-    result = subprocess.run([sys.executable, '-m', 'rankpt_cli', 'analyze'], input=b'{}',
+    result = subprocess.run([sys.executable, '-m', 'rankpt.cli', 'analyze'], input=b'{}',
                             capture_output=True, cwd=ROOT, env={**os.environ, 'PYTHONIOENCODING': 'ascii'})
     assert result.returncode == 2
     assert '缺少字段' in result.stderr.decode('utf-8')
@@ -87,7 +87,7 @@ def test_deeply_nested_json_is_a_concise_input_error():
 
 @pytest.mark.parametrize('prefix', ['', '\ufeff'])
 def test_main_accepts_replacement_text_streams(monkeypatch, prefix):
-    from rankpt_cli import main
+    from rankpt.cli import main
     output = io.StringIO()
     monkeypatch.setattr(sys, 'argv', ['rankpt', 'analyze', '-'])
     monkeypatch.setattr(sys, 'stdin', io.StringIO(prefix + json.dumps(SAMPLE)))
