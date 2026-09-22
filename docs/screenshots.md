@@ -1,6 +1,6 @@
 # 截图来源 / 截圖來源 / Screenshot sources
 
-实测与截取日期 / 實測與擷取日期 / Captured: 2026-09-21.
+实测与截取日期 / 實測與擷取日期 / Captured: 2026-09-21（段位分析 / 段位分析 / rank analysis）· 2026-09-22（牌谱复盘两图 / 牌譜複盤兩圖 / the two replay images）.
 
 README中的前三张图来自本次在[TingQue.ai](https://tingque.ai/)实际完成的牌谱解析和段位计算。最后一张是本仓库运行后的本地分析器界面。图片中的百分比对应具体局面。
 
@@ -47,15 +47,15 @@ The website rank calculation uses South 3, zero honba and deposits, scores of 39
 
 官网图片通过实际操作页面后截取，按浏览器返回的原始JPEG字节保存；截图前滚动到对应功能区域。更新时核对页面状态、玩家匿名显示、三版README图注、来源与校验值，再重新打包。
 
-🔴 **换图必查两条，缺一条就不要提交**：① 所用牌谱是否为公开示例牌谱——非公开牌谱一律不可用作对外截图；② **是否已开启隐藏手牌**——只勾「匿名」只替换玩家名，手牌仍然全部可见。另外，不要在本文件或README里登载牌谱编号或原局直链。
+🔴 **换图必查两条，缺一条就不要提交**：① 所用牌谱是否为公开示例牌谱——非公开牌谱一律不可用作对外截图；② **手牌可见性是否已确认**——只勾「匿名」只替换玩家名，手牌仍然全部可见；**仅当牌谱本身已公开时才可以只开匿名**（本仓库现有截图即属此种），其余一切情况必须同时开启隐藏手牌。另外，不要在本文件或README里登载牌谱编号或原局直链。
 
 官網圖片透過實際操作頁面後擷取，按瀏覽器回傳的原始JPEG位元組保存；截圖前捲動至對應功能區域。更新時核對頁面狀態、玩家匿名顯示、三版README圖說、來源與校驗值，再重新打包。
 
-🔴 **換圖必查兩條，缺一條就不要提交**：① 所用牌譜是否為公開範例牌譜——非公開牌譜一律不可用作對外截圖；② **是否已開啟隱藏手牌**——只勾「匿名」只替換玩家名，手牌仍然全部可見。另外，不要在本文件或README裡登載牌譜編號或原局直連。
+🔴 **換圖必查兩條，缺一條就不要提交**：① 所用牌譜是否為公開範例牌譜——非公開牌譜一律不可用作對外截圖；② **手牌可見性是否已確認**——只勾「匿名」只替換玩家名，手牌仍然全部可見；**僅當牌譜本身已公開時才可以只開匿名**（本儲存庫現有截圖即屬此種），其餘一切情況必須同時開啟隱藏手牌。另外，不要在本文件或README裡登載牌譜編號或原局直連。
 
 Website screenshots retain the browser's original JPEG bytes, with the page scrolled to the relevant functional area before capture. When updating them, verify the page state and anonymous labels, synchronize all three README captions and the source/checksum records, then rebuild the release.
 
-🔴 **Two mandatory checks before committing a replacement screenshot:** (1) the replay must be a public sample replay — never use a non-public replay for outward-facing images; (2) **hand concealment must be enabled** — the anonymous option alone only replaces player names, leaving every hand visible. Also, never publish a replay ID or a direct replay link in this file or in any README.
+🔴 **Two mandatory checks before committing a replacement screenshot:** (1) the replay must be a public sample replay — never use a non-public replay for outward-facing images; (2) **hand visibility must be settled** — the anonymous option alone only replaces player names, leaving every hand visible; **anonymity alone is acceptable only when the replay is itself public** (as it is for the images in this repository), and hand concealment must be enabled in every other case. Also, never publish a replay ID or a direct replay link in this file or in any README.
 
 本地截图 / 本機截圖 / Local screenshot:
 
@@ -78,7 +78,7 @@ Remove-Item Env:UPDATE_SCREENSHOTS
 官网实测图片SHA-256 / 官網實測圖片SHA-256 / Live website screenshot SHA-256:
 
 ```text
-0f24a0886849b3ea51412ecdf099f5182bd0ba7159f9e68b4a8b031e749e126e  tingque-replay.jpg
-95e406d0c341a8272b0e99d89e11fef9fa9c0f681f869d10f724325cb556f519  tingque-replay-analysis.jpg
+d999ac3e8bf0e5aa0d82b5ef728e32061fb9a1cfd49152879db1de3cf2d1679b  tingque-replay.jpg
+4f7670c40cceadfe1241bab8e33523a1e111bb736fba8f0d8d498308bf11ed07  tingque-replay-analysis.jpg
 93d5936f81bca60f0a773c5408300240a61477b77b39da2bed73c8fb06f8f0be  tingque-rank-analysis.jpg
 ```
