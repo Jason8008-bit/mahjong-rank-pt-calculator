@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.5
+
+- Restore the TingQue product title and expand all five capability descriptions in Simplified Chinese, Traditional Chinese and English.
+- Add a concise introduction to the team-trained AI model, with its strength assessment attributed to internal matches and replay-review testing; display the project website explicitly.
+- Retain startup commands, Python examples, project structure and verification instructions in each README, with extended details in three language-specific guides; retain the three actual TingQue website screenshots.
+- Align documentation and release checks with the new guide locations while preserving the 0.1.4 packaging and Python package fixes.
+
 ## 0.1.4 — 2026-09-23
 
 - Move the Python reference implementation into the `rankpt` package (`engine.py`, `rules.py`, `cli.py`) and the Python tests into `tests/`, so the repository root holds no loose modules.

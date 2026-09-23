@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { readFile, mkdir } from 'node:fs/promises';
+import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import AxeBuilder from '@axe-core/playwright';
@@ -27,14 +27,13 @@ test('essential controls meet automated accessibility checks', async ({page}) =>
   expect(expanded.violations.map(item => ({id: item.id, nodes: item.nodes.map(node => node.target)}))).toEqual([]);
 });
 
-test('desktop: compute, expand, paginate, export and record the actual interface', async ({page}, info) => {
+test('desktop: compute, expand, paginate and export', async ({page}, info) => {
   const errors: string[] = [];
   page.on('pageerror', err => errors.push(err.message));
   await page.setViewportSize({width: 1440, height: 1000});
   await page.goto('/');
   await expect(page.getByRole('heading', {name: 'AI 牌谱复盘'})).toBeVisible();
   await expect(page.getByRole('region', {name: '五项核心能力'}).getByRole('link', {name: '前往 TingQue.ai 使用'})).toHaveCount(4);
-  await mkdir('docs/images', {recursive: true});
   await page.getByRole('button', {name: /载入南4示例/}).click();
   await expect(page.getByLabel('起家东点数')).toHaveValue('45000');
   await page.getByLabel('起家东点数').fill('44000');
@@ -60,7 +59,6 @@ test('desktop: compute, expand, paginate, export and record the actual interface
   await (await csvEvent).saveAs(csvFile);
   expect((await readFile(csvFile, 'utf8')).trim().split('\r\n')).toHaveLength(161);
   await page.getByRole('button', {name: '恢复默认'}).click();
-  if (process.env.UPDATE_SCREENSHOTS && info.project.name === 'chromium') await page.locator('#rank-analyzer').screenshot({path: 'docs/images/analyzer.png'});
   expect(errors).toEqual([]);
 });
 

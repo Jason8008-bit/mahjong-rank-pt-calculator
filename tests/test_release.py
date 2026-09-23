@@ -66,7 +66,7 @@ def test_package_requires_build_provenance(release_tree: Path) -> None:
     assert 'package:release' in result.stderr
 
 
-@pytest.mark.parametrize('name', ['package-lock.json', 'pyproject.toml', 'README.md', 'README.zh-TW.md', 'README.en.md', 'CHANGELOG.md'])
+@pytest.mark.parametrize('name', ['package-lock.json', 'pyproject.toml', 'docs/usage.md', 'docs/usage.zh-TW.md', 'docs/usage.en.md', 'CHANGELOG.md'])
 def test_package_rejects_inconsistent_versions(release_tree: Path, name: str) -> None:
     path = release_tree / name
     version = json.loads((release_tree / 'package.json').read_text(encoding='utf-8'))['version']

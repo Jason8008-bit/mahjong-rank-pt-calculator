@@ -6,8 +6,8 @@ export default function App() {
     <header className="site-header"><a className="brand" href="#top" aria-label="听雀 TingQue 首页"><span className="brand-mark" aria-hidden="true">雀</span><span>听雀 <strong>TingQue</strong></span></a>
       <nav aria-label="主导航"><a href="#capabilities">功能概览</a><a href="#rank-analyzer">段位分析</a><a href="#method">使用说明</a></nav>
       <a className="header-link" href="https://tingque.ai/" target="_blank" rel="noopener noreferrer">TingQue.ai <span aria-hidden="true">↗</span></a></header>
-    <main id="top"><section className="hero" aria-labelledby="hero-title"><div className="hero-copy"><p className="eyebrow"><span className="tiny-rule" /> JAPANESE MAHJONG · RANK PT CALCULATOR</p>
-      <h1 id="hero-title">把顺位概率和 pt 期望<span>算清楚。</span></h1><p className="hero-description">按天凤官方东南战 pt 表，估计四家顺位概率与 pt 期望，并对比 160 项代表性结局。<br /><strong>只支持天凤四人东南战（半庄）</strong>；三人麻将与东风战不支持。</p>
+    <main id="top"><section className="hero" aria-labelledby="hero-title"><div className="hero-copy"><p className="eyebrow"><span className="tiny-rule" /> JAPANESE MAHJONG · AI TOOLKIT</p>
+      <h1 id="hero-title">从每一次决策中<br />找到<span>提升空间。</span></h1><p className="hero-description">以日本麻将 AI 为核心，连接牌谱复盘、段位分析、<br />第一打模拟、局面逆推与 AI 陪练。覆盖分析、推演与实战训练。</p>
       <div className="hero-actions"><a className="button primary" href="#rank-analyzer">开始段位分析 <span aria-hidden="true">→</span></a><a className="hero-site-link" href="https://tingque.ai/" target="_blank" rel="noopener noreferrer">前往 TingQue.ai 使用完整功能 <span aria-hidden="true">↗</span></a></div>
       <div className="hero-footnote"><span>分析选择</span><i /><span>理解局面</span><i /><span>持续进步</span></div></div>
       <div className="hero-art" aria-hidden="true"><div className="art-grid" /><div className="art-orbit orbit-one" /><div className="art-orbit orbit-two" />

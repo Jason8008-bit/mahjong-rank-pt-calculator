@@ -1,22 +1,16 @@
 [简体中文](README.md) | [繁體中文](README.zh-TW.md) | [English](README.en.md)
 
-# Japanese mahjong rank-pt calculator
+# TingQue · 听雀
 
-**Placement probabilities and expected rank points from Tenhou's official East–South tables · Runs entirely in the browser, offline**
+TingQue is a Japanese mahjong analysis and training toolkit. It includes AI replay review, rank analysis, first-discard simulation, hand inference and AI practice. Replay analysis supports four-player and three-player games from Tenhou, Mahjong Soul and Mahjong Hime.
 
-Enter the round, honba, riichi deposits and all four scores, choose the intended table and rank, and get placement probabilities, expected pt, and a comparison of 160 representative endings.
+**Official website: [https://tingque.ai/](https://tingque.ai/)**
 
-**Scope — read this first: four-player Tenhou East–South (hanchan) only.** The pt tables are taken from Tenhou's official 「段級位制 ■４人打ち」. Three-player mahjong and East-only games are not supported. Mahjong Soul (雀魂) and 雀姬 derive rank points from the final score in addition to the placement, so their formulas and tables differ from this repository and are likewise out of scope.
+**Replay review**
 
-This repository is open-sourced by **TingQue 听雀** ([tingque.ai](https://tingque.ai/)). TingQue also offers AI replay review, first-discard simulation, hand inference and AI practice — see the capability table below; **the server-side models and inference systems behind those four are not part of this repository.** Rank analysis is the only component here that runs standalone.
+![Replay review: played tile compared with the AI recommendation](docs/images/tingque-replay.jpg)
 
-**TingQue · Actual replay report**
-
-![Actual TingQue report: played tile compared with the AI recommendation](docs/images/tingque-replay.jpg)
-
-This screenshot was captured after analyzing a public Tenhou replay on the TingQue website, with anonymous display enabled. It compares the played tile and AI recommendation at East 1, turn 13. The downloadable interface is shown in the local rank-analysis section below.
-
-## Five core capabilities
+## Features
 
 | Capability | What it does |
 | --- | --- |
@@ -26,40 +20,43 @@ This screenshot was captured after analyzing a public Tenhou replay on the TingQ
 | **Hand inference** | In a four-player report, infer the concealed hand of an opponent with at least two open melds from public information; inspect up to 40 candidates with shanten, waits and point references. |
 | **AI practice** | Invite 1–4 AI players to four-player East-only or East-South games, choosing balanced, closed-hand attack, open-hand attack or defensive styles individually. |
 
-![Actual TingQue report: opponent danger and tenpai estimates](docs/images/tingque-replay-analysis.jpg)
+![Analysis panel: opponent danger and tenpai estimates](docs/images/tingque-replay-analysis.jpg)
 
-This is the actual analysis panel for the same decision, including candidate recommendations, danger and tenpai estimates. Its percentages refer to this particular position.
+**Rank analysis**
 
-**TingQue · Rank analysis in use**
+![Rank analysis: placement probabilities and expected pt](docs/images/tingque-rank-analysis.jpg)
 
-![Actual TingQue website calculation: placement probabilities and expected pt at South 3](docs/images/tingque-rank-analysis.jpg)
+## AI model
 
-Calculated on the website with South 3, scores of 39,000 / 28,000 / 18,000 / 15,000 and the Tokujou / 4-dan preset. See the [capture steps and sources](docs/screenshots.md).
+TingQue's replay analysis is powered by a Japanese mahjong AI model trained by the team. In internal matches and replay-review testing, it performs on par with high-strength mahjong AIs.
 
-## Model and analysis depth
+The model provides candidate action recommendations and position analysis for replays. Reports include recommendation scores, tenpai estimates, tile danger and placement forecasts, with different strategic styles available for comparison.
 
-TingQue relates AI recommendations to the actual decision: compare move candidates, disagreement markers, risk estimates, placement forecasts and different strategic styles. Simulations and hand inference offer further evidence to study. AI estimates are not certain answers and do not promise a particular win rate or rank increase.
+Four-player analysis and practice offer **balanced, closed-hand attack, open-hand attack and defensive** styles. Three-player review uses the balanced style, marks riichi players for tenpai and provides aggregate risk estimates. First-discard simulation, hand inference and AI practice are four-player features.
 
-Replay review supports four- and three-player links from Tenhou and Mahjong Soul, and four- and three-player share codes from the domestic Chinese Mahjong Hime service. Three-player review uses the balanced style, marks riichi players for tenpai and provides aggregate risk estimates. First-discard simulation, hand inference, AI practice and this repository's rank analysis are four-player features.
+## Supported platforms and replay import
 
-This repository opens the **toolkit frontend, independently runnable rank-analysis engine, Python reference implementation and tests**. The application's other four entries open TingQue's corresponding services; their server-side models and inference systems are outside this repository.
+| Platform | Import method | Game types |
+| --- | --- | --- |
+| **Tenhou** | Paste the replay link. | Four-player and three-player. |
+| **Mahjong Soul** | Paste the replay link. | Four-player and three-player. |
+| **Mahjong Hime (雀姬)** | Share the replay in the game and import the copied share code; currently limited to the mainland Chinese servers. | Four-player and three-player. |
 
-## Use rank analysis immediately
+Tenhou-format replay JSON is also supported, with one replay per line for batch import.
 
-Extract `tingque-open-tool-v0.1.4-web.zip` and double-click `index.html`. No Python or Node.js installation is needed for that build. Rank analysis and JSON/CSV export work offline; TingQue destinations require a network connection.
+Importing a replay produces a report with move-by-move playback, candidate recommendations and position metrics. Disagreement navigation locates decisions where the actual move differs from the AI recommendation.
 
-1. Set the round, honba, riichi sticks and the four scores in fixed initial seat order.
-2. Select Tenhou four-player East-South pt or enter custom placement points.
-3. Press the calculation button to compare placement probabilities, pt and outcome changes.
-4. Change perspective, filter and sort outcomes, expand details, or export all 160 outcomes.
+## Using the features
 
-The default East 1 state has four scores of 25,000 and Tokujou/fourth-dan pt: each placement is 25%, with **+3.75 pt** per seat. Editing inputs displays a reminder to recalculate. Scores and results stay in the current page and are not uploaded. The web interface is in Simplified Chinese.
+- **AI replay review**: imported replays produce agreement and mistake-rate summaries, move-by-move analysis and playback. Navigate disagreements, switch strategic styles or generate a sharing link.
+- **Rank analysis**: enter the round, four scores and pt configuration to view score transfers, placement probabilities and pt changes after ron, tsumo and draws. Switch perspective, filter and sort outcomes, and export JSON or CSV.
+- **First-discard simulation**: enter the dealer's hand, dora indicator and position, then select 1–4 candidates for simulated play. Results list expected score, win rate, deal-in rate and placement distributions.
+- **Hand inference**: select an opponent with at least two open melds in a four-player report. Inspect up to 40 candidate hands with shanten, waits and score references, and compare them with the actual hand.
+- **AI practice**: select 1–4 AI players, their individual styles and East-only or East–South rules. Participate in a four-player match or use four AI players for an AI-only game. A replay link is provided after the match.
 
-**Open-source download · Local rank analysis**
+## Website and access
 
-![Actual interface of the open-source download: local rank analysis](docs/images/analyzer.png)
-
-This screenshot comes from running this repository and corresponds to the local analyzer in the downloadable web package.
+For feature access and further information, visit [TingQue at tingque.ai](https://tingque.ai/).
 
 ## Frontend development and builds
 
@@ -92,7 +89,7 @@ rankpt analyze examples/request.json > result.json
 python -m pytest -q
 ```
 
-On Windows, create the environment with `py -m venv .venv`, use `.venv\Scripts\python.exe` for `python`, and `.venv\Scripts\rankpt.exe` for the CLI. Alternatively run `python -m rankpt.cli analyze examples/request.json`. Omit the input file or use `-` to read JSON from standard input. Files and stdin are decoded as UTF-8 with an optional UTF-8 BOM; output and errors also use UTF-8. Invalid input writes to standard error and exits with code 2. Integral JSON values such as `0.0` and `2.5e4` are accepted; booleans, fractional values and infinity are rejected.
+See [Usage and development](docs/usage.en.md) for Windows setup and CLI input details. Alternatively run `python -m rankpt.cli analyze examples/request.json`; omit the file or use `-` to read JSON from standard input.
 
 ```python
 from rankpt import analyze
@@ -108,11 +105,9 @@ print(len(result["endings"]))  # 160
 
 ## How it calculates
 
-A Plackett–Luce heuristic combines score differences across all 24 finishing orders, with temperature `2000 × max(8 − kyoku_idx, 1)`. Expected pt is the sum of each placement probability times its pt value. This is separate from TingQue's replay AI model.
+Rank analysis uses a Plackett–Luce heuristic to estimate placements from score differences and remaining rounds, then combines placement probabilities with pt values. The 160 representative outcomes comprise **108 ron, 36 tsumo and 16 exhaustive-draw scenarios**, each returning transfers, the next state and pt changes.
 
-The 160 outcomes consist of **108 ron + 36 tsumo + 16 exhaustive-draw scenarios**. Each returns score transfers, the next state, all four placement distributions and pt changes. Outcome occurrence probabilities are not modeled; averaging the scenarios equally does not produce a strategy expectation.
-
-Built-in pt follows the [official Tenhou four-player East-South table](https://tenhou.net/man/#DAN). Tsumo divides an equivalent total score and rounds each payment up to 100; it is not a complete fu/han payment table. See the detailed [input contract, algorithm and boundaries](docs/algorithm.md) in Chinese.
+See the [algorithm notes](docs/algorithm.md) for the input contract, scoring and model assumptions, or [Usage and development](docs/usage.en.md) for full operating instructions.
 
 ## Project structure
 
@@ -142,17 +137,9 @@ npm run test:browser
 npm run package:release
 ```
 
-`verify` runs lint, type checking, unit/component tests, field-by-field Python/TypeScript parity, public-copy checks, release regressions using actual builds, and both builds. Parity covers 7 fixed cases, 100 seeded cases spanning all 12 rounds, and 8 raw JSON edge cases; every valid case includes all 160 outcomes, at an absolute tolerance of `1e-12`. On Windows set `$env:PYTHON='.venv\Scripts\python.exe'` before parity; on macOS/Linux you may use `export PYTHON="$PWD/.venv/bin/python"`.
+`verify` runs lint, type checking, unit/component tests, field-by-field Python/TypeScript parity, copy checks, release regressions and both builds. Browser tests cover desktop and mobile interaction, exports and standalone use in Chromium, Firefox and WebKit.
 
-Browser tests run in Chromium, Firefox and WebKit, covering desktop, mobile widths, text contrast, keyboard error focus, exports and offline `file://` use. Opening the source HTML directly displays launch instructions.
-
-`package:release` copies the listed source files to a temporary directory and builds the standalone page from that exact archive content, then writes source/web ZIPs and SHA-256 checksums to `release/`. Build warnings stop a release. Packaging checks source/HTML fingerprints, matching versions, isolated-build provenance and paths, rejecting missing assets, stale builds and symlinks. Use `build:standalone` for ordinary builds; direct Python packaging only accepts unchanged artifacts produced by `package:release`. Run `npm run package:release` again after editing code, documentation or screenshots. A GitHub Actions workflow is included; the same local commands work for a GitCode checkout.
-
-## Model assumptions
-
-Only four-player East-South games are modeled; hands, the wall and player strength are not inputs. Under the simplified end condition, South 4 or later ends when the highest score reaches 30,000; West 4 always ends. Ties use initial seat order. Bankruptcy termination, abortive draws, multiple ron, complete dealer continuation/end conditions and terminal unclaimed riichi-stick allocation are not implemented. The 160 scenarios are representative, not exhaustive of every legal outcome.
-
-Use the local results for comparison, teaching and research, rather than official scoring or empirically calibrated win-rate prediction. Agreement between implementations does not establish agreement with real-world probabilities.
+`package:release` builds from a copy of the listed public source files and produces source/web ZIPs and SHA-256 checksums in `release/`. GitHub Actions provides automated checks; the same local commands work for GitCode. See [Usage and development](docs/usage.en.md) for environment setup, cross-platform steps and release details.
 
 ## Contributions and license
 

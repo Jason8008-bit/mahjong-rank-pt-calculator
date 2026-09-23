@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "tingque-rankpt"
-version = "0.1.4"
+version = "0.1.5"
 description = "Local Japanese mahjong placement and rank-pt scenario analysis"
 readme = "README.en.md"
 requires-python = ">=3.10"

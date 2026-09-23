@@ -35,7 +35,7 @@ def validate_versions(version: str, files: dict[str, bytes]) -> None:
     match = re.search(r'(?m)^version\s*=\s*"([^"]+)"\s*$', project[1] if project else '')
     if not match or match[1] != version:
         raise SystemExit('Version mismatch in pyproject.toml')
-    for name in ('README.md', 'README.zh-TW.md', 'README.en.md'):
+    for name in ('docs/usage.md', 'docs/usage.zh-TW.md', 'docs/usage.en.md'):
         if f'tingque-open-tool-v{version}-web.zip' not in files[name].decode('utf-8'):
             raise SystemExit(f'Version mismatch in {name}')
     headings = re.findall(r'(?m)^## (\d+\.\d+\.\d+)\b', files['CHANGELOG.md'].decode('utf-8'))
