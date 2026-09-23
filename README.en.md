@@ -28,7 +28,7 @@ TingQue is a Japanese mahjong analysis and training toolkit. It includes AI repl
 
 ## AI model
 
-TingQue's replay analysis is powered by a Japanese mahjong AI model trained by the team. In internal matches and replay-review testing, it performs on par with high-strength mahjong AIs.
+TingQue's model is further trained from a mainstream AI model. Based on internal matches, replay comparisons and real-world testing, its overall performance is well ahead of the mainstream AI models on the market and on par with high-strength models.
 
 The model provides candidate action recommendations and position analysis for replays. Reports include recommendation scores, tenpai estimates, tile danger and placement forecasts, with different strategic styles available for comparison.
 
